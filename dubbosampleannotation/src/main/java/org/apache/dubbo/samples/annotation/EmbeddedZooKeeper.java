@@ -1,4 +1,4 @@
-package org.apache.dubbo.samples.annotation.api;
+package org.apache.dubbo.samples.annotation;
 
 import org.apache.zookeeper.server.ServerConfig;
 import org.apache.zookeeper.server.ZooKeeperServerMain;
