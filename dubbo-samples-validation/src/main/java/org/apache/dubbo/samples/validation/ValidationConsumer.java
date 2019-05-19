@@ -29,6 +29,14 @@ public class ValidationConsumer {
         validationService.save(parameter);
         System.out.println("Validation Save OK");
 
+//        update方法，由于email的NotNull注解只对save生效，所以update时如果email为空，也可以保存成功
+        parameter = new ValidationParameter();
+        parameter.setName("zdz");
+        parameter.setAge(26);
+        parameter.setLoginDate(new Date(System.currentTimeMillis() - 1000000));
+        parameter.setExpiryDate(new Date(System.currentTimeMillis() + 1000000));
+        validationService.update(parameter);
+        System.out.println("Validation Update OK");
         // save Error
         try {
             parameter = new ValidationParameter();
