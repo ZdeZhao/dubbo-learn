@@ -11,5 +11,6 @@
     <modules>
         <module>dubbo-samples-generic-impl</module>
         <module>dubbo-samples-generic-type</module>
+        <module>dubbo-samples-generic-call</module>
     </modules>
 </project>
