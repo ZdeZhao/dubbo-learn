@@ -12,6 +12,7 @@ import org.apache.dubbo.samples.generic.call.impl.GenericImplOfHelloService;
 public class GenericImplProvider {
 
     public static void main(String[] args) throws Exception{
+        new EmbeddedZooKeeper(2181, false).start();
         ApplicationConfig applicationConfig = new ApplicationConfig();
         applicationConfig.setName("generic-impl-provider");
         RegistryConfig registryConfig = new RegistryConfig();
@@ -25,9 +26,10 @@ public class GenericImplProvider {
         service.setApplication(applicationConfig);
         service.setRegistry(registryConfig);
 //        弱类型接口名
-        service.setInterface("org.apache.dubbo.samples.call.api.HelloService");
+        service.setInterface("org.apache.dubbo.samples.generic.call.api.HelloService");
 //        指向一个通用服务实现
         service.setRef(helloService);
+        service.setAsync(true);
 //        暴露及注册服务
         service.export();
 

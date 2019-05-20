@@ -10,12 +10,12 @@ import java.util.concurrent.CompletableFuture;
  */
 public class GenericImplOfHelloService implements GenericService {
 
-
     @Override
     public Object $invoke(String method, String[] strings, Object[] objects) throws GenericException {
         if (method.equals("sayHello")){
-            System.out.print("executing sayHello");
-            throw new RuntimeException("Test biz exception");
+            System.out.println("executing sayHello");
+//            throw new RuntimeException("Test biz exception");
+            return "invoke sayHello success";
         }else if (method.equals("sayHelloAsync")) {
             System.out.print("executing sayHelloAsync");
             return CompletableFuture.completedFuture("future method invoke.");

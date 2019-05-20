@@ -18,9 +18,10 @@ public class GenericImplConsumer {
         helloService = (HelloService) context.getBean("helloService");
 
         syncCall();
+//        使用泛化调用时使用异步失败
         futureCall();
 
-//        System.in.read();
+        System.in.read();
     }
 
     private static void futureCall() {
@@ -33,6 +34,6 @@ public class GenericImplConsumer {
 
     private static void syncCall() {
         String syncCallResult = helloService.sayHello("world");
-        System.out.println(syncCallResult);
+        System.err.println(syncCallResult);
     }
 }
