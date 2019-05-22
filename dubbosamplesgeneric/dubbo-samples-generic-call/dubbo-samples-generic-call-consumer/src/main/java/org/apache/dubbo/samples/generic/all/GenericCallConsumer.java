@@ -35,11 +35,17 @@ public class GenericCallConsumer {
 
     public static void $invokeWithNormalSignature() {
         Object result = genericService.$invoke("sayHello", new String[]{"java.lang.String"}, new Object[]{"world"});
-
+        /**
+         * RpcContext: ThreadLocal的临时状态记录器，当接受到RPC请求或发起RPC请求时，RpcContext的状态都会变化。
+         */
         CompletableFuture<String> future = RpcContext.getContext().getCompletableFuture();
         future.whenComplete((value, t) -> {
             System.err.println(value);  // 设置setAsync(true)以后结果异步返回，在这里接受
         });
+        System.err.println("是否为消费端: " + RpcContext.getContext().isConsumerSide());
+        System.err.println("提供方的IP: " + RpcContext.getContext().getRemoteHost());
+        System.err.println("提供方的地址: " + RpcContext.getContext().getRemoteAddress());
+        System.err.println("提供方的端口: " + RpcContext.getContext().getRemotePort());
         System.out.println(".....。" + result);  // 设置结果异步返回以后，在这里result为null
     }
 

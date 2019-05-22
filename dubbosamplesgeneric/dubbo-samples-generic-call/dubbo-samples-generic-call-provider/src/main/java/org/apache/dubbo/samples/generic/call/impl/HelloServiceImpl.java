@@ -1,5 +1,6 @@
 package org.apache.dubbo.samples.generic.call.impl;
 
+import org.apache.dubbo.rpc.RpcContext;
 import org.apache.dubbo.samples.generic.call.api.GenericType;
 import org.apache.dubbo.samples.generic.call.api.HelloService;
 import org.apache.dubbo.samples.generic.call.api.Person;
@@ -13,6 +14,9 @@ public class HelloServiceImpl implements HelloService {
 
     @Override
     public String sayHello(String name) {
+        System.err.println("是否为提供方：" + RpcContext.getContext().isProviderSide());
+        System.err.println("调用方IP：" + RpcContext.getContext().getRemoteAddress());
+        System.err.println("URL参数：" + RpcContext.getContext().getUrls());
         return "======" +"Hello " + name + "======";
     }
 
