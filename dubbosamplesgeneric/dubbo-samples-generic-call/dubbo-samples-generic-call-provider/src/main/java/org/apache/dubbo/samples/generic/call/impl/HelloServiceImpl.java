@@ -30,7 +30,7 @@ public class HelloServiceImpl implements HelloService {
             }catch (InterruptedException e){
                 e.printStackTrace();
             }
-            future.complete("hahaha");
+            future.complete("hello, " + name);
         }).start();
         return future;
     }

@@ -9,6 +9,10 @@ public interface HelloService {
 
     String sayHello(String name);
 
+    default CompletableFuture<String> sayAysncHello(String name){
+        return CompletableFuture.completedFuture(sayHello(name));
+    }
+
     CompletableFuture<String> sayHelloAsync(String name);
 
     CompletableFuture<String> sayHelloAsyncComplex(String name);

@@ -1,4 +1,4 @@
-package org.apache.dubbo.samples.generic.all;
+package org.apache.dubbo.samples.generic.call;
 
 import org.apache.dubbo.config.ApplicationConfig;
 import org.apache.dubbo.config.ReferenceConfig;

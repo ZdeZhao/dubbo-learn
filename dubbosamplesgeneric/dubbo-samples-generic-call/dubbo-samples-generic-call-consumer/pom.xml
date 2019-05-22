@@ -11,6 +11,14 @@
 
     <artifactId>dubbo-samples-generic-call-consumer</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.dubbo</groupId>
+            <artifactId>dubbo-samples-generic-call-api</artifactId>
+            <version>${parent.version}</version>
+        </dependency>
+    </dependencies>
+
     <build>
         <plugins>
             <plugin>
