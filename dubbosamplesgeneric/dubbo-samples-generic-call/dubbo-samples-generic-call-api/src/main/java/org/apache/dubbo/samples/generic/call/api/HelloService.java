@@ -18,4 +18,8 @@ public interface HelloService {
     CompletableFuture<String> sayHelloAsyncComplex(String name);
 
     CompletableFuture<GenericType<Person>> sayHelloAsyncGenericComplex(String name);
+
+    CompletableFuture<String> sayHelloRpcAsync(String name);
+
+    String sayHelloAsyncContext(String name);
 }

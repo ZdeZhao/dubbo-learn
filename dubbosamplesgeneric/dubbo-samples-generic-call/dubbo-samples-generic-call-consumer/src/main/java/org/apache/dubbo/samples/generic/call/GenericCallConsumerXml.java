@@ -23,12 +23,12 @@ public class GenericCallConsumerXml {
                 System.err.println("Response：" + v);
             }
         });
-        System.out.println("Executed before response return.");
+        System.err.println("Executed before response return.");
 
         System.err.println("RpcContext异步调用");
         HelloService asyncHelloService = (HelloService)context.getBean("asyncHelloService");
 //        因为在xml中声明为异步方法，所以返回值为null
-        System.out.println("直接调用初始声明为同步的接口：" + asyncHelloService.sayHello("world"));
+        System.err.println("Provider同步Consumer异步：" + asyncHelloService.sayHello("world"));
         CompletableFuture<String> asyncFuture = RpcContext.getContext().getCompletableFuture();
         asyncFuture.whenComplete((v, t) -> {
             if (t == null) {
@@ -38,6 +38,18 @@ public class GenericCallConsumerXml {
                 t.printStackTrace();
             }
         });
-
+        System.err.println("测试Provider异步执行Consumer同步执行，利用CompletableFuture签名接口");
+        CompletableFuture<String> rpcAsyncFuture = helloService.sayHelloRpcAsync("zdz");
+        rpcAsyncFuture.whenComplete((v, t) -> {
+            if (t == null) {
+                System.err.println("P异步，C异步" + v);
+            } else {
+                t.printStackTrace();
+            }
+        });
+        System.err.println("P异步C同步：" + rpcAsyncFuture); //失败
+//        asyncContext测试
+        String asyncContextFuture = helloService.sayHelloAsyncContext("zdz");   //P异步C同步
+        System.err.println("asyncContext Provider异步Consumer同步：" + asyncContextFuture);
     }
 }

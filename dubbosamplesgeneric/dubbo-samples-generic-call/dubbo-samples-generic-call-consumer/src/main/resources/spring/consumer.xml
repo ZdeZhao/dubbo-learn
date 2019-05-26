@@ -15,6 +15,7 @@
     <dubbo:reference interface="org.apache.dubbo.samples.generic.call.api.HelloService" id="asyncHelloService">
         <!--async=true 将同步的方法设置为异步，由RpcContext获取-->
         <dubbo:method name="sayHello" async="true" />
+        <!--<dubbo:method name="sayHelloRpcAsync" async="false"/>-->
     </dubbo:reference>
 
 </beans>
