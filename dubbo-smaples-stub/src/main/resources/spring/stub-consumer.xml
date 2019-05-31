@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xmlns="http://www.springframework.org/schema/beans" xmlns:dubbp="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <dubbo:application name="stub-consumer" />
+
+    <dubbo:registry address="zookeeper://127.0.0.1:2181" />
+
+    <!--check置为false 测试在provider无提供服务时，stub的工作-->
+    <dubbp:reference interface="org.apache.dubbo.samples.stub.api.DemoService"
+                     check="false"
+                     stub="org.apache.dubbo.samples.stub.api.DemoServiceStub"
+                     id="demoService" />
+</beans>
