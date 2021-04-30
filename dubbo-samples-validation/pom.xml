@@ -10,7 +10,7 @@
 
     <properties>
 
-        <spring.version>4.3.16.RELEASE</spring.version>
+        <spring.version>4.3.29.RELEASE</spring.version>
         <dubbo.version>2.7.0</dubbo.version>
         <dubbo.rpc.version>2.7.0</dubbo.rpc.version>
         <zookeeper.version>3.4.13</zookeeper.version>
